@@ -1,42 +1,44 @@
 # deltalyn.com
 
-The Deltalyn landing page and waitlist. English first, for the US launch; Spanish comes in Phase 3 (see `docs/PLAN_APP_WEB.md`).
+The Deltalyn website: landing page with a 3D hero, waitlist and Deltalyn Pro subscription. English first for the US launch; Spanish comes in Phase 3 (see `docs/PLAN_APP_WEB.md`).
 
-A single static file, `index.html`, with no build step.
+Stack: Next.js (App Router), React Three Fiber (three.js) for the 3D scenes, Supabase for the waitlist, and a Stripe Payment Link for the $19.99/month Deltalyn Pro plan. Operated by Berrezueta Inc.
 
-## Preview locally
-
-Open `index.html` in a browser, or run:
+## Run locally
 
 ```bash
-npx serve apps/web
+cd apps/web
+cp .env.example .env.local   # fill in the Supabase values
+npm install
+npm run dev                  # http://localhost:3000
 ```
 
-## Connect the waitlist
+## Environment variables
 
-Sign-ups are off until you set `WAITLIST_ENDPOINT` near the top of the `<script>` in `index.html`. While it is empty, the form says it is in preview mode and sends nothing.
+| Name | Where to find it |
+|---|---|
+| `SUPABASE_URL` | Supabase → project `deltalyn` → Project Settings → API |
+| `SUPABASE_PUBLISHABLE_KEY` | Same page. Use the `sb_publishable_…` key, never the secret key |
+| `NEXT_PUBLIC_STRIPE_PRO_LINK` | Stripe Payment Link for Deltalyn Pro (already defaults to the live link) |
 
-The form sends a JSON `POST` with these fields:
+Without the Supabase variables, the waitlist answers "Sign-ups aren't open yet" and stores nothing.
 
-| Field | Type | What it holds |
-|---|---|---|
-| `email` | string | Sign-up address |
-| `os` | string | `windows`, `mac` or `both` |
-| `markets` | string[] | Any of `futures`, `stocks`, `options`, `forex`, `crypto` |
-| `prop` | string | `now`, `planning` or `no` |
-| `founder` | boolean | Interested in a founding-member license |
-| `lang` | string | The browser's language |
+## Database
 
-Any form service that accepts JSON works:
+Apply `supabase/migrations/20261012000000_waitlist.sql` to the `deltalyn` project. To do that, paste it into the SQL editor, or run `supabase db push`.
 
-- **Formspree.** Create a form and use its URL, for example `https://formspree.io/f/abcd1234`.
-- **Loops.** Use a form endpoint.
-- **Your own function.** For example a Vercel function that writes to Supabase.
+It creates `public.waitlist` with row-level security turned on. The website's publishable key can insert rows but can't read, update or delete them. To see sign-ups, use the Supabase dashboard (Table Editor → `waitlist`).
+
+## Stripe
+
+- Product: **Deltalyn Pro**, $19.99 USD per month, recurring
+- Payment Link: https://buy.stripe.com/28EdR9fiZ0ze7PEdC6cbC04
+- After payment, Stripe redirects to `/welcome`
 
 ## Deploy on Vercel
 
-1. In Vercel, create a new project from this repository.
-2. Set **Root Directory** to `apps/web`. Leave the framework preset as **Other** and the build command empty.
-3. Under Domains, add `deltalyn.com` and `www.deltalyn.com`, then copy the DNS records Vercel shows into your domain registrar.
+The Vercel project uses **Root Directory** `apps/web` and the Next.js framework preset.
 
-The `vercel.json` file at the repository root turns off automatic Git deployments for the whole repository, so trigger deployments from the Vercel dashboard or the CLI (`vercel --prod` inside `apps/web`). You can also remove that file.
+1. Add the environment variables above.
+2. Under Domains, add `deltalyn.com` and `www.deltalyn.com`.
+3. Copy the DNS records Vercel shows into your domain registrar.
