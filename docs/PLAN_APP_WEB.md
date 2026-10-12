@@ -9,19 +9,20 @@
 
 ## 0. Resumen en 30 segundos
 
-- **Qué es:** un *copiloto de trading con IA, en español*, que lee tu gráfico de TradingView y te ayuda a prepararte, practicar y revisar. **No da señales ni ejecuta órdenes reales**: tú decides.
-- **Para quién (primero):** traders de futuros (ES/NQ) hispanohablantes que hacen evaluaciones de *prop firms*. Pagan $100–500 por evaluación y fallan por disciplina y preparación.
-- **Producto:** app de escritorio (Windows + macOS) + web en español (landing, demo, lista de espera, docs, página de compatibilidad).
+- **Qué es:** un *copiloto de trading con IA* que lee tu gráfico de TradingView y te ayuda a prepararte, practicar y revisar. **No da señales ni ejecuta órdenes reales**: tú decides.
+- **Para quién (primero):** traders de futuros (ES/NQ) **en Estados Unidos** que hacen evaluaciones de *prop firms*. Pagan $100–500 por evaluación y fallan por disciplina y preparación.
+- **Orden de mercados:** 1) **EE. UU., en inglés**, hasta que el mercado lo valide; 2) después, la **versión en español** para todos los países hispanohablantes (Latinoamérica, España y los hispanos de EE. UU.).
+- **Producto:** app de escritorio (Windows + macOS) + web en inglés (landing, demo, lista de espera, docs, página de compatibilidad).
 - **Negocio:** *open-core*. El MCP sigue siendo gratis y abierto; la app Pro cuesta **$19/mes** o **$149/año**, y hay una preventa de fundadores.
 - **Marca:** el producto se llama **Deltalyn** (dominio `deltalyn.com`). "TradingView" no aparece en la marca; como mucho se dice "funciona con TradingView Desktop".
-- **Antes de cobrar:** registrar la marca "Deltalyn" y obtener la **opinión de un abogado** sobre los Términos de TradingView y sobre la regulación de valores en Ecuador.
+- **Antes de cobrar:** registrar la marca "Deltalyn" y obtener la **opinión de un abogado** sobre los Términos de TradingView y sobre la regulación de valores en **EE. UU.** (SEC/CFTC/NFA), que es el primer mercado.
 
 ---
 
 ## 1. Lo que haría un experto del top 0.1% distinto a la mayoría
 
 1. **Validar antes de construir.** Las 3 primeras semanas son solo landing + entrevistas + preventa. Si no hay demanda, no se escribe la app.
-2. **Vender lo que el código abierto no da:** cero configuración, compatibilidad garantizada (arreglos en <48 h cuando TradingView se actualice) y flujos guiados en español. Las 84 herramientas no se venden: ya son gratis.
+2. **Vender lo que el código abierto no da:** cero configuración, compatibilidad garantizada (arreglos en <48 h cuando TradingView se actualice) y flujos guiados. Las 84 herramientas no se venden: ya son gratis.
 3. **La confianza es el producto.** Cada número muestra de dónde salió. Nada se cambia en el gráfico sin tu confirmación. Nunca hay "COMPRA YA".
 4. **Riesgo legal primero, código después.** Los riesgos más grandes son de marca y regulatorios, no técnicos.
 5. **Medir una sola cosa:** las *Sesiones Guiadas Semanales* (ver §7).
@@ -31,13 +32,13 @@
 ## 2. Producto
 
 ### Propuesta de valor
-> "Tu coach de trading con IA dentro de TradingView, en español: plan pre-mercado, práctica en replay y revisión post-sesión, sin configurar nada."
+> "A copilot that reads your chart. You make the calls." Un coach de trading con IA dentro de TradingView: plan pre-mercado, práctica en replay y revisión post-sesión, sin configurar nada."
 
 ### MVP de la app
 
 | Prioridad | Qué incluye |
 |---|---|
-| **Debe tener** | Instalador firmado de un clic · abre TradingView con el puerto de depuración y verifica la conexión · registra el MCP en Claude automáticamente · avisa si tu versión de TradingView no es compatible · 3 flujos en español: **Brief Pre-mercado**, **Coach de Replay**, **Revisión Post-sesión** · diario local de sesiones y P&L del replay |
+| **Debe tener** | Instalador firmado de un clic · abre TradingView con el puerto de depuración y verifica la conexión · registra el MCP en Claude automáticamente · avisa si tu versión de TradingView no es compatible · 3 flujos (en inglés; el español llega en la Fase 3): **Brief Pre-mercado**, **Coach de Replay**, **Revisión Post-sesión** · diario local de sesiones y P&L del replay |
 | **Debería tener** | Brief diario programado · pack de Pine Script · opción en inglés |
 | **No tendrá (v1)** | App móvil · órdenes reales o conexión a broker · datos de mercado en la nube · cuentas multiusuario · marketplace |
 
@@ -155,7 +156,7 @@ apps/web              ← Astro + funciones de Vercel (licencias) → deltalyn.c
 |---|---|---|
 | 1 | **Marca y Términos de TradingView.** El propio README dice "no explotar comercialmente". | Nombre propio (**Deltalyn**) y registro de marca; sin logo ni estética de TradingView; usar como mucho "funciona con…". Pedir la opinión de un abogado o buscar un acuerdo de partner **antes de cobrar**. Si no es viable, lanzar gratis y vender servicios relacionados (cursos, comunidad). |
 | 2 | **Una actualización de TradingView rompe todo** | Prueba automática nocturna contra la última versión, interruptor de apagado por herramienta y respaldo con captura de pantalla. Solo planes mensuales, sin prometer disponibilidad. |
-| 3 | **Regulación de asesoría de inversiones** (Ecuador: Superintendencia de Compañías, Valores y Seguros; también EE. UU., la UE, Brasil y México) | Describir, nunca recomendar. Bloquear palabras como "compra", "vende", "objetivo" o "tamaño". Pedir la opinión de un abogado local y lanzar solo en mercados revisados. |
+| 3 | **Regulación de asesoría de inversiones** (primero **EE. UU.**: SEC y CFTC/NFA, donde importa la "exclusión de publicador" de *Lowe v. SEC*; después Ecuador, México, Colombia, España/UE, etc.) | Describir, nunca recomendar. Bloquear palabras como "compra", "vende", "objetivo" o "tamaño". Pedir la opinión de un abogado local y lanzar solo en mercados revisados. |
 | 4 | **Demandas por pérdidas** | Operar como empresa (S.A.S.), no como persona. Responsabilidad limitada a lo pagado, aceptación de "no es asesoría" al primer uso y nunca ejecutar órdenes reales. |
 | 5 | **Seguridad** (puerto 9222 abierto, inyección de prompts) | Ver §4: seguridad. |
 | 6 | **Costo de la IA** | El usuario trae su propio Claude. Si algún día nosotros pagamos la IA: cuotas por usuario y modelo barato primero. |
@@ -172,10 +173,10 @@ apps/web              ← Astro + funciones de Vercel (licencias) → deltalyn.c
 
 | Fase | Semanas | Qué se hace | Para pasar a la siguiente fase |
 |---|---|---|---|
-| **0 · Validar** | 0–3 | Registro de marca Deltalyn · landing en deltalyn.com en español + demo de 60 s · lista de espera (pregunta el SO) · 15 entrevistas · consulta legal | ≥300 en la lista · ≥60 % hispanohablantes · ≥25 preventas de fundador ($199, máximo 150) · revisión legal hecha |
+| **0 · Validar** | 0–3 | Registro de marca Deltalyn (USPTO primero) · landing **en inglés** en deltalyn.com + demo de 60 s · lista de espera (pregunta SO, mercado y prop firm) · 15 entrevistas con traders de EE. UU. · consulta legal en EE. UU. | ≥300 en la lista · ≥60 % de EE. UU. · ≥25 preventas de fundador ($199, máximo 150) · revisión legal hecha |
 | **1 · Beta privada** | 4–10 | App con los 3 flujos · 50 usuarios · página de compatibilidad | ≥70 % llega a su primer brief en <10 min · ≥40 % sigue activo en la semana 4 · ≥3 flujos por usuario por semana · arreglos en <48 h |
 | **2 · Lanzamiento pago** | 11–20 | Precios públicos · alianzas con comunidades de trading | ≥150 usuarios de pago · ≥$2.5k MRR · prueba→pago ≥15 % · churn <8 % · ≥2 alianzas |
-| **3 · Expandir** | 20+ | Inglés · segmento de desarrolladores Pine · versión nativa para Mac | — |
+| **3 · Expandir al mundo hispano** | 20+ | **Solo si la Fase 2 se cumple en EE. UU.** Versión en español (app + web `deltalyn.com/es`) · revisión legal por país (Ecuador, México, Colombia, España) · alianzas con comunidades hispanas · segmento de desarrolladores Pine · versión nativa para Mac | ≥100 usuarios de pago hispanohablantes en 90 días |
 
 ---
 
@@ -200,7 +201,7 @@ apps/web              ← Astro + funciones de Vercel (licencias) → deltalyn.c
 | Pantallas + web | `figma:figma-generate-design`, `detent` (animaciones), `figma-use-motion` |
 | Crítica | `design:design-critique`, `agentic-council:visual-audit` |
 | Accesibilidad | `design:accessibility-review`, `agentic-council:a11y-audit`, `tesserai check_contrast` |
-| Textos | `design:ux-copy` (propuestas y avisos legales en español) |
+| Textos | `design:ux-copy` (propuestas y avisos legales en inglés; luego `searchfit-seo:translate-content` para el español) |
 | Construcción | `agentic-council:Architect`, `engineering:system-design`, `figma:figma-design-to-code` |
 | Seguridad | `agentic-council:threat-model`, `security-review`, `hawkscan` |
 | Calidad | `engineering:testing-strategy`, `code-review` |
@@ -211,10 +212,10 @@ apps/web              ← Astro + funciones de Vercel (licencias) → deltalyn.c
 ## 9. Próximos 7 días (concreto)
 
 1. **Marca Deltalyn:** dominio listo ✅. Falta:
-   - Buscar "Deltalyn" en los registros de marcas: SENADI (Ecuador), USPTO (EE. UU.) y EUIPO (UE), en la clase 9 (software) y la 36 (servicios financieros). Si está libre, registrarla.
+   - Buscar "Deltalyn" en los registros de marcas: **USPTO (EE. UU.) primero**, luego SENADI (Ecuador) y EUIPO (UE), en la clase 9 (software) y la 36 (servicios financieros). Si está libre, registrarla.
    - Reservar @deltalyn en X, Instagram, TikTok, YouTube y GitHub.
    - Crear correos `hola@deltalyn.com` y `soporte@deltalyn.com`.
-2. Agendar **consulta legal** (Términos de TradingView + regulación de valores en Ecuador).
-3. Publicar la **landing en español en deltalyn.com** con lista de espera y pregunta del sistema operativo.
+2. Agendar **consulta legal en EE. UU.** (Términos de TradingView + SEC/CFTC). Para vender en EE. UU. probablemente convenga una LLC estadounidense (p. ej. Delaware o Wyoming) con Stripe Atlas o similar.
+3. Publicar la **landing en inglés en deltalyn.com** (ya está en `apps/web/`) con lista de espera y pregunta del sistema operativo.
 4. Hacer **5 entrevistas** con traders de prop firms.
 5. Crear en Figma los **tokens de diseño** y el **hero** de la web.
