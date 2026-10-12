@@ -1,4 +1,6 @@
-# Plan: App + Página Web
+# Plan: Deltalyn — App + Página Web
+
+> **Nombre del producto:** Deltalyn · **Dominio:** [deltalyn.com](https://www.deltalyn.com/)
 
 > Plan para convertir este proyecto (el puente MCP entre Claude y TradingView Desktop) en un **producto**: una aplicación de escritorio y una página web pública.
 > Lo armamos con cuatro "expertos" en paralelo (estrategia de producto, arquitectura, diseño y riesgos) y luego unimos sus conclusiones. Donde no estaban de acuerdo, aquí está la decisión y el porqué.
@@ -11,7 +13,8 @@
 - **Para quién (primero):** traders de futuros (ES/NQ) hispanohablantes que hacen evaluaciones de *prop firms*. Pagan $100–500 por evaluación y fallan por disciplina y preparación.
 - **Producto:** app de escritorio (Windows + macOS) + web en español (landing, demo, lista de espera, docs, página de compatibilidad).
 - **Negocio:** *open-core*. El MCP sigue siendo gratis y abierto; la app Pro cuesta **$19/mes** o **$149/año**, y hay una preventa de fundadores.
-- **Antes de cobrar:** **cambiar el nombre** (no se puede usar "TradingView" en la marca) y obtener la **opinión de un abogado** sobre los Términos de TradingView y sobre la regulación de valores en Ecuador.
+- **Marca:** el producto se llama **Deltalyn** (dominio `deltalyn.com`). "TradingView" no aparece en la marca; como mucho se dice "funciona con TradingView Desktop".
+- **Antes de cobrar:** registrar la marca "Deltalyn" y obtener la **opinión de un abogado** sobre los Términos de TradingView y sobre la regulación de valores en Ecuador.
 
 ---
 
@@ -141,7 +144,7 @@ packages/cli          ← src/cli
 packages/daemon       ← bucle del agente, permisos, SQLite, socket local
 packages/shared       ← esquemas, niveles de riesgo por herramienta
 apps/desktop          ← Tauri
-apps/web              ← Astro + funciones de Vercel (licencias)
+apps/web              ← Astro + funciones de Vercel (licencias) → deltalyn.com
 ```
 
 ---
@@ -150,7 +153,7 @@ apps/web              ← Astro + funciones de Vercel (licencias)
 
 | # | Riesgo | Mitigación |
 |---|---|---|
-| 1 | **Marca y Términos de TradingView.** El propio README dice "no explotar comercialmente". | Cambiar el nombre ya, sin logo ni estética de TradingView; usar como mucho "funciona con…". Pedir la opinión de un abogado o buscar un acuerdo de partner **antes de cobrar**. Si no es viable, lanzar gratis y vender servicios relacionados (cursos, comunidad). |
+| 1 | **Marca y Términos de TradingView.** El propio README dice "no explotar comercialmente". | Nombre propio (**Deltalyn**) y registro de marca; sin logo ni estética de TradingView; usar como mucho "funciona con…". Pedir la opinión de un abogado o buscar un acuerdo de partner **antes de cobrar**. Si no es viable, lanzar gratis y vender servicios relacionados (cursos, comunidad). |
 | 2 | **Una actualización de TradingView rompe todo** | Prueba automática nocturna contra la última versión, interruptor de apagado por herramienta y respaldo con captura de pantalla. Solo planes mensuales, sin prometer disponibilidad. |
 | 3 | **Regulación de asesoría de inversiones** (Ecuador: Superintendencia de Compañías, Valores y Seguros; también EE. UU., la UE, Brasil y México) | Describir, nunca recomendar. Bloquear palabras como "compra", "vende", "objetivo" o "tamaño". Pedir la opinión de un abogado local y lanzar solo en mercados revisados. |
 | 4 | **Demandas por pérdidas** | Operar como empresa (S.A.S.), no como persona. Responsabilidad limitada a lo pagado, aceptación de "no es asesoría" al primer uso y nunca ejecutar órdenes reales. |
@@ -169,7 +172,7 @@ apps/web              ← Astro + funciones de Vercel (licencias)
 
 | Fase | Semanas | Qué se hace | Para pasar a la siguiente fase |
 |---|---|---|---|
-| **0 · Validar** | 0–3 | Nuevo nombre · landing en español + demo de 60 s · lista de espera (pregunta el SO) · 15 entrevistas · consulta legal | ≥300 en la lista · ≥60 % hispanohablantes · ≥25 preventas de fundador ($199, máximo 150) · revisión legal hecha |
+| **0 · Validar** | 0–3 | Registro de marca Deltalyn · landing en deltalyn.com en español + demo de 60 s · lista de espera (pregunta el SO) · 15 entrevistas · consulta legal | ≥300 en la lista · ≥60 % hispanohablantes · ≥25 preventas de fundador ($199, máximo 150) · revisión legal hecha |
 | **1 · Beta privada** | 4–10 | App con los 3 flujos · 50 usuarios · página de compatibilidad | ≥70 % llega a su primer brief en <10 min · ≥40 % sigue activo en la semana 4 · ≥3 flujos por usuario por semana · arreglos en <48 h |
 | **2 · Lanzamiento pago** | 11–20 | Precios públicos · alianzas con comunidades de trading | ≥150 usuarios de pago · ≥$2.5k MRR · prueba→pago ≥15 % · churn <8 % · ≥2 alianzas |
 | **3 · Expandir** | 20+ | Inglés · segmento de desarrolladores Pine · versión nativa para Mac | — |
@@ -207,8 +210,11 @@ apps/web              ← Astro + funciones de Vercel (licencias)
 
 ## 9. Próximos 7 días (concreto)
 
-1. Elegir **3 nombres** sin "TradingView" y comprobar que los dominios estén libres.
+1. **Marca Deltalyn:** dominio listo ✅. Falta:
+   - Buscar "Deltalyn" en los registros de marcas: SENADI (Ecuador), USPTO (EE. UU.) y EUIPO (UE), en la clase 9 (software) y la 36 (servicios financieros). Si está libre, registrarla.
+   - Reservar @deltalyn en X, Instagram, TikTok, YouTube y GitHub.
+   - Crear correos `hola@deltalyn.com` y `soporte@deltalyn.com`.
 2. Agendar **consulta legal** (Términos de TradingView + regulación de valores en Ecuador).
-3. Publicar la **landing en español** con lista de espera y pregunta del sistema operativo.
+3. Publicar la **landing en español en deltalyn.com** con lista de espera y pregunta del sistema operativo.
 4. Hacer **5 entrevistas** con traders de prop firms.
 5. Crear en Figma los **tokens de diseño** y el **hero** de la web.
