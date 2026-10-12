@@ -36,7 +36,7 @@ create table if not exists public.outcomes (
 );
 
 -- Nothing can be edited or deleted once written, not even by the service role.
-create or replace function public.reject_change() returns trigger language plpgsql as $$
+create or replace function public.reject_change() returns trigger language plpgsql set search_path = '' as $$
 begin
   raise exception 'The scenario ledger is append-only';
 end $$;
