@@ -1,0 +1,25 @@
+name: Deltalyn API probe
+
+on:
+  push:
+    paths:
+      - engine/deltalyn_engine/probe.py
+      - .github/workflows/deltalyn-probe.yml
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: engine
+    env:
+      JEV_API_KEY: ${{ secrets.JEV }}
+      CRYPTOQUANT_API_KEY: ${{ secrets.CRYPTOQUANT_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m deltalyn_engine.probe
