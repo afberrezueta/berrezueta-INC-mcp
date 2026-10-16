@@ -1,0 +1,35 @@
+name: Deltalyn scenario engine
+
+on:
+  schedule:
+    - cron: "30 21 * * 1-5"   # after the US close: publish stocks + crypto, then grade
+    - cron: "15 0 * * 0,6"    # weekends: crypto only
+  workflow_dispatch:
+
+concurrency: deltalyn-engine
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: engine
+    env:
+      FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt pytest
+      - run: python -m pytest -q
+      - name: Grade open scenarios
+        run: python -m deltalyn_engine.run grade
+      - name: Publish stocks and crypto
+        if: github.event.schedule != '15 0 * * 0,6'
+        run: python -m deltalyn_engine.run publish SPY QQQ BTCUSD ETHUSD
+      - name: Publish crypto (weekend)
+        if: github.event.schedule == '15 0 * * 0,6'
+        run: python -m deltalyn_engine.run publish BTCUSD ETHUSD
