@@ -18,6 +18,9 @@ jobs:
       FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      # Shadow reviewers: stored next to each scenario, never change what is published.
+      JEV_API_KEY: ${{ secrets.JEV }}
+      CRYPTOQUANT_API_KEY: ${{ secrets.CRYPTOQUANT_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
