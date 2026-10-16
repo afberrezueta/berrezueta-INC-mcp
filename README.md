@@ -45,7 +45,7 @@ Specifically it investigates:
 
 This is not a trading bot. It is an interface layer that makes a trading application legible to an LLM agent, allowing researchers and developers to study human-AI collaboration in financial workflows.
 
-See [RESEARCH.md](RESEARCH.md) for open questions, findings, and related work.
+See [docs/RESEARCH.md](docs/RESEARCH.md) for open questions, findings, and related work.
 
 ## Prerequisites
 
@@ -145,7 +145,7 @@ bash scripts/install_apple_design_mcp.sh --design-only --activate   # drop --des
 node scripts/check_apple_design_mcp.mjs
 ```
 
-Server list, prerequisites and privacy notes: [SETUP_GUIDE.md, Step 7](SETUP_GUIDE.md#step-7-apple-design-mcp-servers-optional).
+Server list, prerequisites and privacy notes: [docs/SETUP_GUIDE.md, Step 7](docs/SETUP_GUIDE.md#step-7-apple-design-mcp-servers-optional).
 
 ## CLI
 
