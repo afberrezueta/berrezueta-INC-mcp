@@ -50,7 +50,7 @@ Windows:
 TradingView for Windows now ships **only as an MSIX package** (Microsoft Store and tvd-packages.tradingview.com both install under `C:\Program Files\WindowsApps\`). Use the launch script — it resolves the install via `Get-AppxPackage`, which works without admin rights:
 
 ```bat
-scripts\launch_tv_debug.bat
+scripts\launch\launch_tv_debug.bat
 ```
 
 Or, preferred: let the `tv_launch` MCP tool do it — it auto-detects MSIX installs and, on Windows builds where launching from `WindowsApps` is blocked with **"Access is denied"**, automatically copies the package to `%LOCALAPPDATA%\tradingview-mcp\` (one-time, ~330MB) and launches from the copy. The copy keeps your login, layout, and chart state. If the fallback was used, the result includes `msix_local_copy: true`.
@@ -135,8 +135,8 @@ From the same search but not registered: [palmier-pro](https://github.com/Genusc
 ### Install and test
 
 ```bash
-bash scripts/install_apple_design_mcp.sh            # all 13; add --design-only for the 7 HIG/design servers
-node scripts/check_apple_design_mcp.mjs        # handshake test: prints the tool count of every server
+bash scripts/apple-design/install_apple_design_mcp.sh            # all 13; add --design-only for the 7 HIG/design servers
+node scripts/apple-design/check_apple_design_mcp.mjs        # handshake test: prints the tool count of every server
 ```
 
 The installer clones into `vendor/apple-design/` (git-ignored) and builds there. It needs `git`, Node 20+, `uv` (`brew install uv`) and, for `vishwakarma`, pnpm 10 (falls back to `npx pnpm@10`). What it cannot do for you, printed again at the end of each run:
@@ -151,7 +151,7 @@ The installer clones into `vendor/apple-design/` (git-ignored) and builds there.
 Claude Code only auto-loads a file named `.mcp.json`, so nothing runs until you activate it:
 
 ```bash
-bash scripts/install_apple_design_mcp.sh --design-only --activate   # writes the servers that installed OK into .mcp.json (merges if it exists)
+bash scripts/apple-design/install_apple_design_mcp.sh --design-only --activate   # writes the servers that installed OK into .mcp.json (merges if it exists)
 # alternatives:
 cp apple-design.mcp.json .mcp.json                             # all 13, project scope
 claude --mcp-config apple-design.mcp.json                      # one session only
@@ -172,7 +172,7 @@ Claude Code asks you to approve project servers the first time it sees them (`cl
 | `tv` command not found | Run `npm link` from the project directory |
 | Tools return stale data | TradingView may still be loading — wait a few seconds |
 | Pine Editor tools fail | Open the Pine Editor panel first (`ui_open_panel pine-editor open`) |
-| Apple design server shows "failed" in `/mcp` | Run `bash scripts/install_apple_design_mcp.sh`, then `node scripts/check_apple_design_mcp.mjs` and follow the manual steps it prints |
+| Apple design server shows "failed" in `/mcp` | Run `bash scripts/apple-design/install_apple_design_mcp.sh`, then `node scripts/apple-design/check_apple_design_mcp.mjs` and follow the manual steps it prints |
 
 ## What to Read Next
 

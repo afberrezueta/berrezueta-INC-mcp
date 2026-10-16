@@ -1,6 +1,6 @@
 #!/bin/bash
 # Launch TradingView Desktop on Linux with Chrome DevTools Protocol enabled
-# Usage: ./scripts/launch_tv_debug_linux.sh [port]
+# Usage: ./scripts/launch/launch_tv_debug_linux.sh [port]
 
 PORT="${1:-9222}"
 

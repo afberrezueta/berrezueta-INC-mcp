@@ -8,10 +8,10 @@
  * reason (command missing, early exit, no reply). It does not call any tool.
  *
  * Usage:
- *   node scripts/check_apple_design_mcp.mjs                    check every server
- *   node scripts/check_apple_design_mcp.mjs hig detent         check only these servers
- *   node scripts/check_apple_design_mcp.mjs --timeout 120      seconds to wait per server (default 60)
- *   node scripts/check_apple_design_mcp.mjs --config apple-design.mcp.json   check all 13 declared servers
+ *   node scripts/apple-design/check_apple_design_mcp.mjs                    check every server
+ *   node scripts/apple-design/check_apple_design_mcp.mjs hig detent         check only these servers
+ *   node scripts/apple-design/check_apple_design_mcp.mjs --timeout 120      seconds to wait per server (default 60)
+ *   node scripts/apple-design/check_apple_design_mcp.mjs --config apple-design.mcp.json   check all 13 declared servers
  *
  * Exit code 1 if any checked server failed.
  */
@@ -20,7 +20,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const CONCURRENCY = 3;
 
 let timeoutMs = 60_000;
@@ -179,6 +179,6 @@ await Promise.all(Array.from({ length: Math.min(CONCURRENCY, servers.length) }, 
 const failed = results.filter((result) => result.status === 'failed');
 console.log(`\n${results.length - failed.length}/${results.length} servers answered tools/list`);
 if (failed.length) {
-  console.log('Failed servers: run bash scripts/install_apple_design_mcp.sh, then check the manual steps it prints.');
+  console.log('Failed servers: run bash scripts/apple-design/install_apple_design_mcp.sh, then check the manual steps it prints.');
   process.exit(1);
 }

@@ -19,15 +19,15 @@ If not already clear, ask the user:
 
 If modifying an existing script:
 ```bash
-node scripts/pine_pull.js
+node scripts/pine/pine_pull.js
 ```
-Then read `scripts/current.pine` to understand what's there.
+Then read `scripts/pine/current.pine` to understand what's there.
 
 If creating new: start from scratch.
 
 ## Step 3: Write the Pine Script
 
-Write the complete script to `scripts/current.pine`. Every script MUST include:
+Write the complete script to `scripts/pine/current.pine`. Every script MUST include:
 - `//@version=6` header
 - Proper `indicator()` or `strategy()` declaration
 - All user inputs with `input.*()` functions and groups
@@ -41,7 +41,7 @@ For strategies, include:
 ## Step 4: Push and Compile
 
 ```bash
-node scripts/pine_push.js
+node scripts/pine/pine_push.js
 ```
 
 This injects the code into TradingView's Pine Editor, clicks compile, and reports any errors.
@@ -50,8 +50,8 @@ This injects the code into TradingView's Pine Editor, clicks compile, and report
 
 If errors are reported:
 1. Read the error messages (line number + description)
-2. Edit `scripts/current.pine` locally — fix the specific lines
-3. Push again: `node scripts/pine_push.js`
+2. Edit `scripts/pine/current.pine` locally — fix the specific lines
+3. Push again: `node scripts/pine/pine_push.js`
 4. Repeat until 0 errors
 
 Common Pine Script errors:
@@ -70,7 +70,7 @@ After clean compilation:
 ## Step 7: Iterate
 
 If the user wants changes:
-1. Pull fresh: `node scripts/pine_pull.js` (in case TV modified anything)
+1. Pull fresh: `node scripts/pine/pine_pull.js` (in case TV modified anything)
 2. Edit locally
 3. Push + compile
 4. Screenshot to verify

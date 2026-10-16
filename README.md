@@ -94,17 +94,17 @@ TradingView Desktop must be running with Chrome DevTools Protocol enabled on por
 
 **Mac:**
 ```bash
-./scripts/launch_tv_debug_mac.sh
+./scripts/launch/launch_tv_debug_mac.sh
 ```
 
 **Windows:**
 ```bash
-scripts\launch_tv_debug.bat
+scripts\launch\launch_tv_debug.bat
 ```
 
 **Linux:**
 ```bash
-./scripts/launch_tv_debug_linux.sh
+./scripts/launch/launch_tv_debug_linux.sh
 ```
 
 **Or launch manually on any platform:**
@@ -141,8 +141,8 @@ Ask Claude: *"Use tv_health_check to verify TradingView is connected"*
 `apple-design.mcp.json` registers 13 MCP servers found by the GitHub search "apple design mcp": Human Interface Guidelines lookups, design tokens, Liquid Glass and motion guidance, SwiftUI HIG checks, Keynote automation and more.
 
 ```bash
-bash scripts/install_apple_design_mcp.sh --design-only --activate   # drop --design-only for all 13
-node scripts/check_apple_design_mcp.mjs
+bash scripts/apple-design/install_apple_design_mcp.sh --design-only --activate   # drop --design-only for all 13
+node scripts/apple-design/check_apple_design_mcp.mjs
 ```
 
 Server list, prerequisites and privacy notes: [docs/SETUP_GUIDE.md, Step 7](docs/SETUP_GUIDE.md#step-7-apple-design-mcp-servers-optional).
