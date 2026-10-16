@@ -9,8 +9,8 @@ export default function Welcome() {
         <p className="eyebrow">Deltalyn Pro</p>
         <h1>You're in. Thank you.</h1>
         <p className="lede">
-          Your subscription is active. Stripe has emailed your receipt. We'll send your download link and setup guide
-          to the same address as soon as your beta invite is ready.
+          Your founding membership is active and Stripe has emailed your receipt. Each Pro feature reaches founding
+          members first; we'll email you at the same address as each one goes live.
         </p>
         <p>
           Questions or need a refund? Write to <span className="num">support@deltalyn.com</span>. You can cancel any

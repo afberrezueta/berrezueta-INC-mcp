@@ -17,6 +17,8 @@ from .levels import Level, all_levels, atr
 # Typical travel grows with sqrt(time), so the minimum distance does too.
 MIN_DISTANCE_PER_SQRT_BAR = 0.5
 FALLBACK_DISTANCE_PER_SQRT_BAR = 0.8
+# Levels farther than this are rarely reached within the horizon, so they make a near-certain, uninformative race.
+MAX_DISTANCE_PER_SQRT_BAR = 1.5
 PRIOR_STRENGTH = 20
 MIN_PRIOR_EXPIRE = 0.05
 WARMUP_BARS = 60
@@ -25,10 +27,11 @@ WARMUP_BARS = 60
 def _pick(levels: list[Level], price: float, a: float, side: str, horizon: int) -> tuple[float, float | None, list[str]]:
     """Return (level, next level beyond it, methods) on one side of price."""
     min_dist = MIN_DISTANCE_PER_SQRT_BAR * np.sqrt(horizon) * a
+    max_dist = MAX_DISTANCE_PER_SQRT_BAR * np.sqrt(horizon) * a
     if side == "up":
-        cands = sorted((lv for lv in levels if lv.price >= price + min_dist), key=lambda lv: lv.price)
+        cands = sorted((lv for lv in levels if price + min_dist <= lv.price <= price + max_dist), key=lambda lv: lv.price)
     else:
-        cands = sorted((lv for lv in levels if lv.price <= price - min_dist), key=lambda lv: -lv.price)
+        cands = sorted((lv for lv in levels if price - max_dist <= lv.price <= price - min_dist), key=lambda lv: -lv.price)
     if not cands:
         step = FALLBACK_DISTANCE_PER_SQRT_BAR * np.sqrt(horizon) * a
         lvl = price + step if side == "up" else price - step

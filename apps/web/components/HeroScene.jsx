@@ -4,8 +4,8 @@ import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-// A field of 3D candlesticks receding to the horizon, with the prior-day-high
-// level drawn as a glowing plane the copilot is "proposing".
+// A field of 3D candlesticks receding to the horizon, capped by a glowing plane:
+// the upper level of a scenario that price is racing toward.
 const ROWS = 9;
 const COLS = 46;
 const UP = new THREE.Color("#5AA9FF");

@@ -9,10 +9,10 @@ export const metadata = {
   metadataBase: new URL("https://www.deltalyn.com"),
   title: { default: "Deltalyn", template: "%s · Deltalyn" },
   description:
-    "Deltalyn is an AI copilot for TradingView Desktop. Pre-market briefs, replay drills and post-session reviews. Runs on your computer and never places a trade.",
+    "Daily scenarios for US stocks and crypto: clear price levels, honest odds, and a public, auto-graded record of every call.",
   openGraph: {
     title: "Deltalyn",
-    description: "A copilot that reads your chart. You make the calls.",
+    description: "Clear levels. Honest odds. Every call on the record.",
     url: "https://www.deltalyn.com",
     siteName: "Deltalyn",
     type: "website",
