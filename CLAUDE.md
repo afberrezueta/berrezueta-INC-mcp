@@ -122,7 +122,7 @@ These tools can return large payloads. Follow these rules to avoid context bloat
 
 ## Apple Design MCP Servers (optional)
 
-`apple-design.mcp.json` (activated as `.mcp.json`, see SETUP_GUIDE Step 7) adds design servers next to the TradingView tools. When they are connected, use them for any UI or design question instead of guessing Apple conventions:
+`apple-design.mcp.json` (activated as `.mcp.json`, see docs/SETUP_GUIDE.md Step 7) adds design servers next to the TradingView tools. When they are connected, use them for any UI or design question instead of guessing Apple conventions:
 
 - `hig` → `hig_get_tokens` for system colors, typography, materials and layout values; `hig_check_liquid_glass` before shipping glass effects; `hig_swiftui` for component-to-SwiftUI mappings
 - `apple-design` → `hig_search` / `hig_get` to quote the actual Human Interface Guidelines text for a platform

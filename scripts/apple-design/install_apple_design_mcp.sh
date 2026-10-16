@@ -10,15 +10,15 @@
 #     (API keys, macOS permissions, model downloads)
 #
 # Usage:
-#   bash scripts/install_apple_design_mcp.sh                 install everything
-#   bash scripts/install_apple_design_mcp.sh --design-only   only the HIG / design-language servers
-#   bash scripts/install_apple_design_mcp.sh --only hig --only detent
-#   bash scripts/install_apple_design_mcp.sh --skip logomcp --skip harlo
-#   bash scripts/install_apple_design_mcp.sh --with-plugins  also install the Claude Code plugins
-#   bash scripts/install_apple_design_mcp.sh --activate      also write the installed servers into .mcp.json
-#   bash scripts/install_apple_design_mcp.sh --dry-run       show the plan, change nothing
+#   bash scripts/apple-design/install_apple_design_mcp.sh                 install everything
+#   bash scripts/apple-design/install_apple_design_mcp.sh --design-only   only the HIG / design-language servers
+#   bash scripts/apple-design/install_apple_design_mcp.sh --only hig --only detent
+#   bash scripts/apple-design/install_apple_design_mcp.sh --skip logomcp --skip harlo
+#   bash scripts/apple-design/install_apple_design_mcp.sh --with-plugins  also install the Claude Code plugins
+#   bash scripts/apple-design/install_apple_design_mcp.sh --activate      also write the installed servers into .mcp.json
+#   bash scripts/apple-design/install_apple_design_mcp.sh --dry-run       show the plan, change nothing
 #
-# Afterwards: node scripts/check_apple_design_mcp.mjs   (handshake test of every server)
+# Afterwards: node scripts/apple-design/check_apple_design_mcp.mjs   (handshake test of every server)
 #
 # Claude Code only auto-loads a file named .mcp.json, so nothing is active until you pass
 # --activate (or copy apple-design.mcp.json to .mcp.json yourself).
@@ -27,7 +27,7 @@
 # from Git Bash or WSL; the JSON config itself is cross-platform.
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 VENDOR="$ROOT/vendor/apple-design"
 LOGS="$VENDOR/.logs"
 
@@ -242,7 +242,7 @@ say "  apple-mail           macOS Mail; read-only access to Mail's local databas
 say "  harlo                Python 3.12 + Rust toolchain (maturin build); reads Apple Watch health data"
 say ""
 say "Next:"
-say "  1. node scripts/check_apple_design_mcp.mjs      # handshake test, lists tool counts"
+say "  1. node scripts/apple-design/check_apple_design_mcp.mjs      # handshake test, lists tool counts"
 if [ "$ACTIVATE" = 1 ]; then
   say "  2. restart Claude Code in this directory and approve the project servers when prompted"
   say "     (reset those choices later with 'claude mcp reset-project-choices')"

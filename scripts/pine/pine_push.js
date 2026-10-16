@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Push scripts/current.pine → TradingView editor, then compile
+// Push scripts/pine/current.pine → TradingView editor, then compile
 import CDP from 'chrome-remote-interface';
 import { readFileSync } from 'fs';
 
-const srcPath = new URL('../scripts/current.pine', import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1');
+const srcPath = new URL('./current.pine', import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1');
 const src = readFileSync(srcPath, 'utf-8');
 
 const targets = await (await fetch('http://localhost:9222/json/list')).json();
