@@ -39,3 +39,6 @@ create or replace view public.reviewer_scores with (security_invoker = true) as
   where r.lean_p_up is not null;
 
 grant select on public.reviewer_scores to anon, authenticated;
+
+-- Waitlist: the new site asks for the reader's horizon instead of computer and prop-firm status.
+alter table public.waitlist add column if not exists horizon text check (horizon in ('trade', 'invest', 'both'));

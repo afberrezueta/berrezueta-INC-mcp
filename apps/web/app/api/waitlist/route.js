@@ -1,9 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const OS = new Set(["windows", "mac", "both"]);
-const PROP = new Set(["now", "planning", "no"]);
-const MARKETS = new Set(["futures", "stocks", "options", "forex", "crypto"]);
+const HORIZONS = new Set(["trade", "invest", "both"]);
+const MARKETS = new Set(["stocks", "crypto"]);
 
 const json = (body, status = 200) => Response.json(body, { status });
 
@@ -29,15 +28,19 @@ export async function POST(request) {
 
   const row = {
     email,
-    os: OS.has(input.os) ? input.os : null,
-    prop: PROP.has(input.prop) ? input.prop : null,
+    horizon: HORIZONS.has(input.horizon) ? input.horizon : null,
     markets: Array.isArray(input.markets) ? input.markets.filter((m) => MARKETS.has(m)).slice(0, 5) : [],
     founder: input.founder === true,
     lang: typeof input.lang === "string" ? input.lang.slice(0, 20) : null,
   };
 
   const supabase = createClient(url, key, { auth: { persistSession: false } });
-  const { error } = await supabase.from("waitlist").insert(row);
+  let { error } = await supabase.from("waitlist").insert(row);
+  // Until the horizon column migration is applied, store the sign-up without it rather than losing it.
+  if (error && (error.code === "PGRST204" || error.code === "42703")) {
+    const { horizon, ...rest } = row;
+    ({ error } = await supabase.from("waitlist").insert(rest));
+  }
 
   // 23505 = already signed up. Treat as success so we don't reveal who is on the list.
   if (error && error.code !== "23505") {
