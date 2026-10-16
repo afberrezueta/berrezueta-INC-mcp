@@ -1,9 +1,6 @@
 name: Deltalyn API probe
 
 on:
-  push:
-    branches: [claude/sharp-noether-9mtthw]
-    paths: [engine/**, .github/workflows/deltalyn-probe.yml]
   workflow_dispatch:   # run by hand to check that the Jev and CryptoQuant keys work
 
 jobs:
