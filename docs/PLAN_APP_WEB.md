@@ -196,9 +196,9 @@ apps/web              ← Astro + funciones de Vercel (licencias) → deltalyn.c
 |---|---|
 | Validación y mensajes | `agentic-council:Strategist`, `marketing:competitive-brief`, `herald-messaging-strategy`, `searchfit-seo:content-strategy` |
 | Legal | `agentic-council:Guardian`, `legal:compliance-check`, `legal:legal-risk-assessment` (+ un abogado humano) |
-| Fundamentos de diseño | MCP `hig` → `hig_get_tokens`, `apple-design` → `hig_search`, `better-design` → `resolve-design-system "Apple"` |
+| Fundamentos de diseño | Human Interface Guidelines de Apple (developer.apple.com/design) consultadas a mano; los MCP de diseño se retiraron del proyecto por seguridad |
 | Sistema de diseño | `agentic-council:design-system-architecture`, `figma:figma-generate-library` |
-| Pantallas + web | `figma:figma-generate-design`, `detent` (animaciones), `figma-use-motion` |
+| Pantallas + web | `figma:figma-generate-design`, `figma-use-motion` |
 | Crítica | `design:design-critique`, `agentic-council:visual-audit` |
 | Accesibilidad | `design:accessibility-review`, `agentic-council:a11y-audit`, `tesserai check_contrast` |
 | Textos | `design:ux-copy` (propuestas y avisos legales en inglés; luego `searchfit-seo:translate-content` para el español) |
