@@ -6,3 +6,12 @@ temp_*
 discovery-log.json
 rules.json
 vendor/
+
+# Secrets — never commit. The bot's scans read API keys and bot tokens from
+# .env files on the machine that runs them (CRYPTOQUANT_API_KEY,
+# TELEGRAM_BOT_TOKEN, BETTER_DESIGN_API_KEY, broker credentials).
+.env
+.env.*
+!.env.example
+*.pem
+*.key
